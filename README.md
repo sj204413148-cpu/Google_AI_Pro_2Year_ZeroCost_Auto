@@ -41,6 +41,4 @@
      Step 5: 自动前往 Google Play 取消自动续订，锁死 2 年到期权益并截图验真
 
 
-# 卡网：https://faka.cdkey.si
-# 博客：https://blog.caowo.de
-# TG群：@Hello_Florence
+
