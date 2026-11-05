@@ -1168,12 +1168,14 @@ class GoogleUltraAutomator:
         await self.save_screenshot(page, f"{step_tag}_modal")
 
         if not target_fr:
-            self.log(f"⚠️ [{step_tag}] 未检测到 Google Play 结账弹窗 (eacquire/multiline)")
+            self.last_subscribe_error = "未检测到 Google Play 结账弹窗 (eacquire/multiline)"
+            self.log(f"⚠️ [{step_tag}] {self.last_subscribe_error}")
             return False
 
         self.log(f"[{step_tag}] 结账弹窗内容: {clean_txt[:350]}")
         if "错误" in clean_txt or "Something went wrong" in clean_txt or "unable to change" in clean_txt or "出了点问题" in clean_txt:
-            self.log(f"⚠️ [{step_tag}] 弹窗返回异常信息: {clean_txt[:200]}")
+            self.last_subscribe_error = f"结账弹窗返回 Google 错误 ({clean_txt[:200]})"
+            self.log(f"⚠️ [{step_tag}] {self.last_subscribe_error}")
             return False
 
         # Ensure the configured card (last4) is selected in the eacquire modal if multiple cards exist

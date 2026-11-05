@@ -4,8 +4,17 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import time
 from typing import Dict, Any, List, Optional
+
+# Emoji in log lines breaks print() on redirected/GBK consoles and turned the
+# proxy-test request (and potentially a running job) into a crash.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles

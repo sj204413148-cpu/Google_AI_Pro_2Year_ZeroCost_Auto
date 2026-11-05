@@ -1,0 +1,18 @@
+# 本地运行时数据：包含账号密码、2FA 密钥、支付卡号/CVC、浏览器 cookie、账号截图
+# 一律不上传。
+config.json
+profiles/
+screenshots/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini

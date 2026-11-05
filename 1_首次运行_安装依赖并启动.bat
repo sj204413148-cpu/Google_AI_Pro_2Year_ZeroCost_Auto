@@ -1,7 +1,11 @@
 @echo off
 chcp 936 >nul
 title Google AI Pro (5 TB) 零成本两年全自动控制台 - 环境安装与启动
-cd /d "%~dp0"
+cd /d "%~dp0"
+rem ---- ensure real python is used (avoid Microsoft Store App Execution Alias) ----
+set "PYDIR=%LOCALAPPDATA%\Programs\Python\Python312"
+if exist "%PYDIR%\python.exe" set "PATH=%PYDIR%;%PYDIR%\Scripts;%PATH%"
+
 echo ======================================================================
 echo   正在检查并安装 Python 依赖包 (fastapi, uvicorn, playwright)...
 echo ======================================================================
